@@ -10,8 +10,9 @@ name = "pypi"
 requests = "*"
 getport = "*"
 pytest = "*"
-
+assertpy = "*"
 
 
 [dev-packages]
+
 pytest-watch = "*"
