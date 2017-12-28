@@ -1,5 +1,6 @@
 language: python
 install:
+    - pwd
     - make init
 python:
   - "3.6"
