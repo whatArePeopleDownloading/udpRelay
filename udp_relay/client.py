@@ -1,5 +1,5 @@
 import socket
-from .udp_header import encode
+from header import encode
 import getport
 import threading
 

@@ -5,7 +5,7 @@
 
 import logging
 import socket
-from .udp_header import decode
+from header import decode
 logger = logging.getLogger('relay-server')
 logging.basicConfig(filename='udp_relay_server.log', level='DEBUG')
 
