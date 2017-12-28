@@ -5,9 +5,11 @@
 
 import socket
 from .header import decode
-from .logger import logger
+from .logger import getLogger
+logger = getLogger('[server]')
 
-class server:
+
+class Server:
     def __init__(self, port=10002):
         self.__sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.__sock.bind(('0.0.0.0', port))
@@ -17,30 +19,28 @@ class server:
     def start(self):
         while True:
             data, address = self.__sock.recvfrom(4096)
-            logger.info('收到消息!')
             if data:
                 decode_data, decode_address = decode(data)
                 if decode_address != 0:
-                    self.__client_address = address
-                    logger.info('转发来自 ' + str(decode_address) + '的流量:' + str(decode_data))
-                    self.__sock.sendto(decode_data, decode_address)
+                    self.forword(decode_data, decode_address, address)
                 else:
                     if len(self.__client_address) == 0:
                         logger.error('无client!')
                         return
                     else:
-                        logger.info(str(address) + ' -> ' + str(self.__client_address) + ' || ' + str(data))
+                        logger.info('Forword back:\t' + str(address) + '\t->\t' +
+                                    str(self.__client_address) + ' || ' + str(data))
                         self.__sock.sendto(data, self.__client_address)
 
-
-
-
-
-
-
+    def forword(self, decode_data, decode_address, address):
+        self.__client_address = address
+        logger.info('Forword\t' + str(address) + '\t->\t' +
+                    str(decode_address) + ' data:' + str(decode_data))
+        self.__sock.sendto(decode_data, decode_address)
     def close(self):
         self.__sock.close()
 
+
 if __name__ == '__main__':
-    server = server()
+    server = Server()
     server.start()

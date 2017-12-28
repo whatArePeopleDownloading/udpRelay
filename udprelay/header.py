@@ -1,7 +1,7 @@
 import socket
 import ipaddress
-from .logger import logger
-
+from .logger import getLogger
+logger = getLogger('[udpRelayHeader]')
 
 """
    extera header for client (8 Bytes)

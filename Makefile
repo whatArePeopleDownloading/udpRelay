@@ -7,7 +7,7 @@ tests:
 	pipenv run pytest
 
 start:
-	python -m udprelay.server
+	pipenv run python -m udprelay.server
 publish:
 	pip install 'twine>=1.5.0'
 	python setup.py sdist

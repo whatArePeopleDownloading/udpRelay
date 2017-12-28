@@ -10,7 +10,7 @@ def read(fname):
 
 setup(
     name = "udprelay",
-    version = "0.1.1",
+    version = "0.2.0",
     author = "meta Z",
     author_email = "zycode277@gmail.com",
     description = "another simple udp realy server and client",

@@ -7,13 +7,13 @@ name = "pypi"
 
 [packages]
 
-requests = "*"
 getport = "*"
-pytest = "*"
-assertpy = "*"
 coloredlogs = "*"
 
 
 [dev-packages]
+assertpy = "*"
+pytest = "*"
+pytest-timeout = "*"
 
 pytest-watch = "*"
