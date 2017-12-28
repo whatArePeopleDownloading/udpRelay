@@ -14,7 +14,6 @@ class Client:
         self.__sock.bind(('0.0.0.0', port))
         self.recvfrom = self.__sock.recvfrom
         logger.info('client bind on ' + str(port))
-        threading.Thread(target=self.recvfrom).start()
     def sendto(self, data, address):
         logging.debug('sending data to ' + str(address[0]) + ':' + str(address[1]))
         data = encode(data, address)

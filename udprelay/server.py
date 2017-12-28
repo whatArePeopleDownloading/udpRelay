@@ -11,13 +11,14 @@ logger = getLogger('[server]')
 
 class Server:
     def __init__(self, port=10002):
+        self.__running = True
         self.__sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.__sock.bind(('0.0.0.0', port))
         self.__client_address = ()
         logger.info('server start on ' + str(port))
 
     def start(self):
-        while True:
+        while self.__running:
             data, address = self.__sock.recvfrom(4096)
             if data:
                 decode_data, decode_address = decode(data)
@@ -39,8 +40,9 @@ class Server:
         self.__sock.sendto(decode_data, decode_address)
     def close(self):
         self.__sock.close()
-
-
+        self.__running = False
 if __name__ == '__main__':
     server = Server()
     server.start()
+    import time
+    time.sleep(2)
