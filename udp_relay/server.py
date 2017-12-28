@@ -5,11 +5,11 @@
 
 import logging
 import socket
+import sys
 from header import decode
 logger = logging.getLogger('relay-server')
-logging.basicConfig(filename='udp_relay_server.log', level='DEBUG')
-
-
+# logging.basicConfig(filename='udp_relay_server.log', level='DEBUG')
+logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 
 class server:
     def __init__(self, port=10002):

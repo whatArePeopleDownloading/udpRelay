@@ -6,7 +6,8 @@ watch:
 tests:
 	pipenv run pytest
 
-
+start:
+	python udp_relay/server.py
 publish:
 	pip install 'twine>=1.5.0'
 	python setup.py sdist
