@@ -1,4 +1,6 @@
-
+import socket
+import ipaddress
+from .logger import logger
 
 
 """
@@ -8,14 +10,23 @@
 |2 byte|        4 bytes       | 2 bytes|
 +--------------------------------------+
 """
-
+def getIP(address):
+    try:
+        ipaddress.ip_address(address)
+    except ValueError:
+        val = socket.gethostbyname(address)
+        logger.info(address + '->' + val)
+    return address
 AUTH_FLAG=0x7f7f
 # encode extera udp header
 def encode(data, address):
+
     flag = AUTH_FLAG.to_bytes(2, 'big')
-    ip = ip2bytes(address[0])
+    ip = getIP(address[0])
+
+    Bip = ip2bytes(ip)
     port = int(address[1]).to_bytes(2, 'big')
-    return flag + ip + port + data
+    return flag + Bip + port + data
 
 
 # decode udp header
@@ -47,4 +58,5 @@ def ip2bytes(ipaddress):
     ipadd = list(map(int, ipadd))
     ipNum = int.from_bytes(ipadd, 'big')
     return ipNum.to_bytes(4, 'big')
+
 

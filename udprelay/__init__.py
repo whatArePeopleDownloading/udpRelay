@@ -4,4 +4,4 @@
 
 #from .udp_header import decode, encode
 
-from . import client
+from .client import Client
