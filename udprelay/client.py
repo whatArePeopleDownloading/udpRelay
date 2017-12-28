@@ -1,5 +1,5 @@
 import socket
-from header import encode
+from .header import encode
 import getport
 import threading
 
