@@ -15,10 +15,10 @@ def test_client():
     while True:
         data, address = client.recvfrom(4096)
         if data:
+            server.close()
             assert data == payload
             assert address == address
             break
-    server.close()
 def start_server():
     server.start()
 
