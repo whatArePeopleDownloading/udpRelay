@@ -9,12 +9,12 @@ def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 setup(
-    name = "udp_relay",
-    version = "0.1.3",
+    name = "udpRelay",
+    version = "0.1.0",
     author = "meta Z",
     author_email = "zycode277@gmail.com",
     description = "another simple udp realy server and client",
     license = "MIT",
     long_description=read('README.rst'),
-    url='https://github.com/whatArePeopleDownloading/udp_relay'
+    url='https://github.com/whatArePeopleDownloading/udpRelay'
 )
