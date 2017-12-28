@@ -2,8 +2,8 @@
 ============================================================
 
 
-.. image:: https://travis-ci.org/whatArePeopleDownloading/udp_relay.svg?branch=master
-    :target: https://travis-ci.org/whatArePeopleDownloading/udp_relay
+.. image:: https://travis-ci.org/whatArePeopleDownloading/udpRelay.svg?branch=master
+    :target: https://travis-ci.org/whatArePeopleDownloading/udpRelay
 
 .. code:: python
 
