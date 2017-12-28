@@ -9,7 +9,7 @@ def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 setup(
-    name = "udpRelay",
+    name = "udprelay",
     version = "0.1.0",
     author = "meta Z",
     author_email = "zycode277@gmail.com",

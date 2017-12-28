@@ -1,4 +1,4 @@
-from udp_relay.header import *
+from udprelay.header import *
 
 def test_main():
     address = ('192.168.0.2', 1092)
