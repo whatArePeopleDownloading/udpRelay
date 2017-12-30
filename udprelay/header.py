@@ -15,7 +15,8 @@ def getIP(address):
         ipaddress.ip_address(address)
     except ValueError:
         val = socket.gethostbyname(address)
-        logger.info(address + '->' + val)
+        # logger.info(address + '->' + val)
+        return val
     return address
 AUTH_FLAG=0x7f7f
 # encode extera udp header
