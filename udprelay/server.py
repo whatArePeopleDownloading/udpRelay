@@ -22,7 +22,7 @@ class Server:
             data, address = self.__sock.recvfrom(4096)
             if data:
                 decode_data, decode_address = decode(data)
-                if decode_address != 0:
+                if decode_address != 0:    # From our client
                     self.forword(decode_data, decode_address, address)
                 else:
                     if len(self.__client_address) == 0:
@@ -44,5 +44,3 @@ class Server:
 if __name__ == '__main__':
     server = Server()
     server.start()
-    import time
-    time.sleep(2)
