@@ -41,7 +41,7 @@ class Server:
         try:
             self.__sock.sendto(decode_data, decode_address)
         except Exception as e:
-            logger.error(traceback.format_exc() + "sendError: des addr: " str(decode_address))
+            logger.error(traceback.format_exc() + "sendError: des addr: " + str(decode_address))
     def close(self):
         self.__running = False
 
