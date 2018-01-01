@@ -4,7 +4,7 @@
 # 2017-12-12
 
 import socket
-from .header import decode
+from .header import decode, encode
 from .logger import getLogger
 logger = getLogger('[server]')
 
@@ -30,16 +30,16 @@ class Server:
                     else:
                         logger.info('Forword back:\t' + str(address) + '\t->\t' +
                                     str(self.__client_address) + ' || ' + str(data))
-                        self.__sock.sendto(data, self.__client_address)
-
+                        self.__sock.sendto(encode(data, address), self.__client_address)
+        self.__sock.close()
     def forword(self, decode_data, decode_address, address):
         self.__client_address = address
         logger.info('Forword\t' + str(address) + '\t->\t' +
                     str(decode_address) + ' data:' + str(decode_data))
         self.__sock.sendto(decode_data, decode_address)
     def close(self):
-        self.__sock.close()
         self.__running = False
+
 if __name__ == '__main__':
     server = Server()
     server.start()

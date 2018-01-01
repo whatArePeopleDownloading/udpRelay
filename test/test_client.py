@@ -1,9 +1,9 @@
-from udprelay import Server, Client
+from udprelay import server, Client
 import getport
 import pytest
 import threading
 PORT = getport.get()
-server = Server(PORT)
+server = server.Server(PORT)
 @pytest.mark.timeout(4)
 def test_client():
     threading.Thread(target = start_server).start()

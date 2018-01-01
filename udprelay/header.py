@@ -31,9 +31,12 @@ def encode(data, address):
 
 
 # decode udp header
-# return (address, data)
+# return (data, address)
 # return (0,0) if flag is wrong
 def decode(data):
+    """
+
+    """
     if int.from_bytes(data[:2], 'big') == AUTH_FLAG:
         ip = byte2IP(data[2:6])
         port = byte2Int(data[6:8])

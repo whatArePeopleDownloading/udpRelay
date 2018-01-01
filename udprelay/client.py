@@ -3,7 +3,7 @@ import getport
 import threading
 import logging
 import sys
-from .header import encode
+from .header import encode, decode
 from .logger import getLogger
 logger = getLogger('[client]')
 class Client:
@@ -14,7 +14,7 @@ class Client:
         self.__sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         port = getport.get()
         self.__sock.bind(('0.0.0.0', port))
-        self.recvfrom = self.__sock.recvfrom
+
         logger.info('client bind on ' + str(port))
     def sendto(self, data, address):
         self.checkaddress(address)
@@ -22,6 +22,13 @@ class Client:
         data = encode(data, address)
         # logger.debug(data)
         self.__sock.sendto(data, self.__realyServer)
+    def recvfrom(self, buffersize=4096):
+        while True:
+            data, address = self.__sock.recvfrom(buffersize)
+            if data:
+                data, address = decode(data)
+                if data != 0:
+                    return data, address
     @staticmethod
     def checkaddress(address):
         assert address[0] != None
