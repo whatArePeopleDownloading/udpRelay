@@ -29,6 +29,7 @@ class Client:
                 data, address = decode(data)
                 if data != 0:
                     return data, address
+
     @staticmethod
     def checkaddress(address):
         assert address[0] != None

@@ -6,6 +6,7 @@
 import socket
 from .header import decode, encode
 from .logger import getLogger
+import traceback
 logger = getLogger('[server]')
 
 
@@ -36,7 +37,11 @@ class Server:
         self.__client_address = address
         logger.info('Forword\t' + str(address) + '\t->\t' +
                     str(decode_address) + ' data:' + str(decode_data))
-        self.__sock.sendto(decode_data, decode_address)
+        # ('74.205.156.64', 0)
+        try:
+            self.__sock.sendto(decode_data, decode_address)
+        except Exception as e:
+            logger.error(traceback.format_exc() + "sendError: des addr: " str(decode_address))
     def close(self):
         self.__running = False
 
