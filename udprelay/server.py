@@ -27,7 +27,6 @@ class Server:
                 else:
                     if len(self.__client_address) == 0:
                         logger.error('无client!')
-                        return
                     else:
                         logger.info('Forword back:\t' + str(address) + '\t->\t' +
                                     str(self.__client_address) + ' || ' + str(data))
